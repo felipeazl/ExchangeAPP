@@ -58,7 +58,7 @@ export default function Home() {
             Ver todas
           </Link>
         </div>
-        <div className="px-10 pt-10 flex flex-row gap-40">
+        <div className="px-10 pt-10 flex flex-row gap-4 w-[100vw] overflow-auto whitespace-nowrap">
           {coins.map((item, index) => (
             <Card
               key={index}
@@ -80,7 +80,7 @@ export default function Home() {
             Ver todas
           </Link>
         </div>
-        <div className="px-10 pt-10 flex flex-row gap-40">
+        <div className="px-10 pt-10 flex flex-row gap-4 w-[100vw] overflow-auto whitespace-nowrap">
           {coins.map((item, index) => (
             <Card
               key={index}
