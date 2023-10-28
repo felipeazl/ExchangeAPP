@@ -19,7 +19,7 @@ export default function Card(props: Data) {
   const variation = checkVariation();
 
   return (
-    <div className="flex flex-col border-2 shadow-xl border-indigo-600 rounded-lg p-8 w-80 h-80">
+    <div className="flex flex-col border-2 shadow-xl border-indigo-600 rounded-lg p-4 w-80 h-80">
       <div className=" flex flex-row items-center">
         <img className="w-[25%] rounded-[50%]" src={props.imgUrl} />
         <div className="ml-4">
@@ -27,7 +27,7 @@ export default function Card(props: Data) {
           <p className="text-lg font-bold">{props.symbol}</p>
         </div>
       </div>
-      <div className="flex justify-between mt-[100px]">
+      <div className="flex justify-between mt-[120px]">
         <p>Preço: </p>
         <p className="text-xl font-medium">{props.price}</p>
       </div>
@@ -38,7 +38,7 @@ export default function Card(props: Data) {
             variation ? "text-green-600" : "text-red-600"
           }`}
         >
-          {props.variation}
+          {variation ? "+" + props.variation : props.variation}
         </div>
       </div>
       <div className="relative">

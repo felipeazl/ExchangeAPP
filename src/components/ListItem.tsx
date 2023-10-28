@@ -1,3 +1,7 @@
+import IconGraphDownArrow from "../assets/svgs/GraphDown";
+import IconGraphUpArrow from "../assets/svgs/GraphUp";
+import IconRightArrow from "../assets/svgs/LeftArrow";
+
 interface Data {
   imgUrl: string;
   symbol: string;
@@ -30,12 +34,17 @@ const ListItem = (props: Data) => {
       <div className="px-16 flex flex-col items-end">
         <div className="text-xl font-medium">{props.price}</div>
         <div
-          className={`text-lg ${variation ? "text-green-600" : "text-red-600"}`}
+          className={`text-lg flex flex-row gap-2 justify-center items-center ${
+            variation ? "text-green-600" : "text-red-600"
+          }`}
         >
           {props.variation}
+          {variation ? <IconGraphUpArrow /> : <IconGraphDownArrow />}
         </div>
       </div>
-      <div className="px-16"> {"->"} </div>
+      <div className="px-16">
+        <IconRightArrow color="#4338ca" width={24} height={24} />
+      </div>
     </div>
   );
 };
