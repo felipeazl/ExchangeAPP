@@ -14,6 +14,7 @@ interface Data {
   variation: string;
   id: string;
   isFavorite?: boolean;
+  isB3?: boolean;
 }
 
 const ListItem = (props: Data) => {
@@ -73,14 +74,18 @@ const ListItem = (props: Data) => {
           />
         </a>
       </div>
-      <div className="px-16">
-        <Link
-          className="w-full flex flex-col justify-center items-center "
-          to={`/details/${props.id}`}
-        >
-          <IconRightArrow color="#4338ca" width={24} height={24} />
-        </Link>
-      </div>
+      {props.isB3 ?? (
+        <div className="px-16">
+          <Link
+            className="w-full flex flex-col justify-center items-center "
+            to={
+              props.isB3 ? `/detailsb3/${props.name}` : `/details/${props.id}`
+            }
+          >
+            <IconRightArrow color="#4338ca" width={24} height={24} />
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
