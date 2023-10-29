@@ -33,8 +33,9 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
-        history("/");
+        history("/home");
       })
+      .then(localStorage.setItem("isLogged", "1"))
       .catch((error) => {
         console.error(error.message);
       });
@@ -42,13 +43,6 @@ const Login = () => {
 
   return (
     <div className="relative">
-      <Header />
-      <Back
-        width={24}
-        height={24}
-        onClick={handleGoBack}
-        className="absolute top-[100px] left-[50px] cursor-pointer"
-      />
       <div className="flex flex-col items-center pt-[20vh]">
         <h1 className="text-2xl font-semibold">Acesse sua conta.</h1>
         <form className="flex flex-col w-96" onSubmit={handleSignIn}>

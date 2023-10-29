@@ -1,6 +1,10 @@
+import { Link } from "react-router-dom";
 import IconGraphDownArrow from "../assets/svgs/GraphDown";
 import IconGraphUpArrow from "../assets/svgs/GraphUp";
+import IconHeart from "../assets/svgs/Heart";
 import IconRightArrow from "../assets/svgs/LeftArrow";
+import { useState } from "react";
+import { useFavoriteContext } from "../contexts/Favorites";
 
 interface Data {
   imgUrl: string;
@@ -8,9 +12,27 @@ interface Data {
   name: string;
   price: string;
   variation: string;
+  id: string;
+  isFavorite?: boolean;
 }
 
 const ListItem = (props: Data) => {
+  const [isFavortie, setIsFavorite] = useState(false);
+  const { addFavorite } = useFavoriteContext();
+
+  function handleFavorite() {
+    addFavorite({
+      name: props.name,
+      symbol: props.symbol,
+      imgUrl: props.imgUrl,
+      price: props.price,
+      variation: props.variation,
+      isFavorite: isFavortie,
+      id: props.id,
+    });
+    setIsFavorite(!isFavortie);
+  }
+
   function checkVariation() {
     const variation = parseFloat(props.variation);
     if (variation > 0) {
@@ -43,7 +65,21 @@ const ListItem = (props: Data) => {
         </div>
       </div>
       <div className="px-16">
-        <IconRightArrow color="#4338ca" width={24} height={24} />
+        <a onClick={handleFavorite} className="cursor-pointer">
+          <IconHeart
+            color={isFavortie || props.isFavorite ? "#dc2626" : "#4338ca"}
+            width={24}
+            height={24}
+          />
+        </a>
+      </div>
+      <div className="px-16">
+        <Link
+          className="w-full flex flex-col justify-center items-center "
+          to={`/details/${props.id}`}
+        >
+          <IconRightArrow color="#4338ca" width={24} height={24} />
+        </Link>
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import * as api from "../api/api";
 import ListItem from "../components/ListItem";
 import { formatBRL, formatVariation } from "../helpers/formatHelper";
 import Loader from "../components/Loader";
-import { Link } from "react-router-dom";
 
 export default function Crypto() {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,19 +40,15 @@ export default function Crypto() {
       ) : (
         <div className="flex flex-col justify-center items-center mt-10">
           {cryptoData.map((item, index) => (
-            <Link
-              className="w-full flex flex-col justify-center items-center "
-              to={`/details/${item.id}`}
-            >
-              <ListItem
-                key={index}
-                name={item.name}
-                symbol={item.symbol}
-                imgUrl={item.image_url}
-                price={formatBRL(item.latest)}
-                variation={formatVariation(item.percent_change)}
-              />
-            </Link>
+            <ListItem
+              key={index}
+              id={item.id}
+              name={item.name}
+              symbol={item.symbol}
+              imgUrl={item.image_url}
+              price={formatBRL(item.latest)}
+              variation={formatVariation(item.percent_change)}
+            />
           ))}
         </div>
       )}

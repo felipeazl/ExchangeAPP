@@ -11,7 +11,7 @@ interface CryptoModel {
   id: string;
   image_url: string;
   latest: string;
-  variation: PercentChange;
+  latest_price: { percent_change: PercentChange };
   timestamp: string;
   name: string;
   percent_change: number;

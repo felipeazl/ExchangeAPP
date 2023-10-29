@@ -41,9 +41,6 @@ export default function Card(props: Data) {
           {variation ? "+" + props.variation : props.variation}
         </div>
       </div>
-      <div className="relative">
-        <a className="absolute bottom-[-50px] right-[-5px]">Explorar</a>
-      </div>
     </div>
   );
 }
