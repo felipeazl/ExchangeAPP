@@ -10,6 +10,7 @@ export default function Crypto() {
   const [isLoading, setIsLoading] = useState(true);
   const [cryptoData, setCryptoData] = useState<CryptoModel[]>([]);
 
+  //função para requisitar os dados
   async function fetchCryptos() {
     try {
       const response = await api.Get(
@@ -22,6 +23,7 @@ export default function Crypto() {
     }
   }
 
+  //intervalo entre requisições para ter sempre os dados atualizados
   useEffect(() => {
     fetchCryptos();
     const intervalId = setInterval(fetchCryptos, 60000);

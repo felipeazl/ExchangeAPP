@@ -7,6 +7,7 @@ interface Data {
 }
 
 export default function Card(props: Data) {
+  //verifica se a variação foi positiva ou negativa para mudar a cor e o icone
   function checkVariation() {
     const variation = parseFloat(props.variation);
     if (variation > 0) {

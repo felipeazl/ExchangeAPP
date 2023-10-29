@@ -7,9 +7,11 @@ import { getPaginatedB3 } from "../api/b3";
 import { B3Model } from "../models/B3Model";
 
 export default function B3() {
+  //Cria os states de loading e de dados
   const [isLoading, setIsLoading] = useState(true);
   const [b3Data, setB3Data] = useState<B3Model[]>([]);
 
+  //função para fazer a requisição dos dados
   async function fetchB3() {
     try {
       const response = await getPaginatedB3();
@@ -20,6 +22,7 @@ export default function B3() {
     }
   }
 
+  //adiciona um intervalo para sempre ter os dados atualizados a cada minuto
   useEffect(() => {
     fetchB3();
     const intervalId = setInterval(fetchB3, 60000);

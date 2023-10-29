@@ -21,6 +21,7 @@ const ListItem = (props: Data) => {
   const [isFavortie, setIsFavorite] = useState(false);
   const { addFavorite } = useFavoriteContext();
 
+  //função para adicionar favoritos
   function handleFavorite() {
     addFavorite({
       name: props.name,

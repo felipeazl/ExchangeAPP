@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import IconCashCoin from "../assets/svgs/Logo";
 
 export default function Header() {
+  //define as rotas do header
   const routes = [
     { path: "/", name: "Home" },
     { path: "/crypto", name: "Crypto" },
