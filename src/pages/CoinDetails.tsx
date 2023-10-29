@@ -16,12 +16,12 @@ const CoinDetails = () => {
       if (!loadingData) {
         const response = await getCoinDetails(id);
         const crypto = await getCoins();
-        if (response.data.base === crypto.data.symbol) {
-          setCryptoData(crypto.data);
-        }
-        setCoinPriceHistory(response.data);
+        const pageCrypto = crypto.data.filter(
+          (item: { symbol: string }) => item.symbol === response.data.base
+        );
+        setCryptoData(pageCrypto);
+        setCoinPriceHistory(response.data.prices);
         setLoadingData(true);
-        console.log(response.data);
       }
     } catch (error) {
       console.error("Erro ao buscar os dados da API:", error);
