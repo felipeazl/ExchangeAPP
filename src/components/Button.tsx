@@ -1,7 +1,7 @@
 interface ButtonProps {
   label: string;
   className?: string;
-  type: string;
+  type?: "button" | "submit" | "reset" | undefined;
 }
 
 const Button = (props: ButtonProps) => {

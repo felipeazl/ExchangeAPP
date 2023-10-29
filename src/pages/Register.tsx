@@ -1,6 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import Back from "../assets/svgs/Back";
 import InputFormField from "../components/InputFormField";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
@@ -10,9 +9,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth"; // Importe a fun
 
 const Register = () => {
   const history = useNavigate();
-  function handleGoBack() {
-    history(-1);
-  }
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,6 +30,7 @@ const Register = () => {
         const user = userCredential.user;
         // Redirecione o usuário para a página de login ou qualquer outra página desejada
         history("/login");
+        console.log(user);
       })
       .catch((error) => {
         // Lidar com erros de registro, por exemplo, exibindo uma mensagem de erro

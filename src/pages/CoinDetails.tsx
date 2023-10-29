@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
@@ -28,6 +30,7 @@ const CoinDetails = () => {
         );
         setCryptoData(selectedCrypto);
         setCoinPriceHistory(response.data.prices);
+        console.log(coinPriceHistory);
         setLoadingData(true);
         setIsLoading(false);
       }

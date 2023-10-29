@@ -13,7 +13,6 @@ export default function B3() {
   async function fetchB3() {
     try {
       const response = await getPaginatedB3();
-      console.log(response);
       setB3Data(response.stocks);
       setIsLoading(false);
     } catch (error) {
@@ -40,6 +39,7 @@ export default function B3() {
         <div className="flex flex-col justify-center items-center mt-10">
           {b3Data.map((item, index) => (
             <ListItem
+              id={item.name}
               key={index}
               name={item.stock}
               symbol={item.name}

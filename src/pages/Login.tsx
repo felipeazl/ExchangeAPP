@@ -1,6 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import Back from "../assets/svgs/Back";
 import InputFormField from "../components/InputFormField";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
@@ -14,10 +13,6 @@ const Login = () => {
   const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  function handleGoBack() {
-    history(-1);
-  }
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -34,8 +29,9 @@ const Login = () => {
       .then((userCredential) => {
         setUser(userCredential.user);
         history("/home");
+        console.log(user);
       })
-      .then(localStorage.setItem("isLogged", "1"))
+      .then(() => localStorage.setItem("isLogged", "1"))
       .catch((error) => {
         console.error(error.message);
       });
