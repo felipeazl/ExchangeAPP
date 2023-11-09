@@ -30,7 +30,6 @@ const CoinDetails = () => {
         );
         setCryptoData(selectedCrypto);
         setCoinPriceHistory(response.data.prices);
-        console.log(coinPriceHistory);
         setLoadingData(true);
         setIsLoading(false);
       }
@@ -43,8 +42,6 @@ const CoinDetails = () => {
     fetchCoinHistory();
   }, []);
 
-  console.log(cryptoData);
-
   return (
     <div>
       <Header />
@@ -55,75 +52,70 @@ const CoinDetails = () => {
       ) : (
         <div className="w-full h-full flex justify-center items-center p-10">
           {cryptoData.map((item) => (
-            <div className="w-full h-full bg-zinc-200 shadow-xl p-8 rounded-xl">
+            <div className="w-full h-full bg-zinc-200 shadow-xl p-20 rounded-xl">
               <div className="flex items-center">
                 <img src={item.image_url} />
-                <div className="pl-10">
-                  <p className="font-medium text-3xl">{item.name}</p>
-                  <p className="font-bold text-lg">{item.symbol}</p>
-                </div>
-              </div>
-              <div className="flex flex-col items-center mt-4">
-                <div className="flex gap-2">
-                  <p className="font-normal text-2xl">Preço:</p>
-                  <p className="font-medium text-2xl">
-                    {formatBRL(item.latest)}
-                  </p>
-                </div>
-                <div
-                  className={`text-4xl flex flex-row gap-2 justify-center items-center ${
-                    item.percent_change > 0 ? "text-green-600" : "text-red-600"
-                  }`}
-                >
-                  {formatVariation(item.percent_change)}
-                  {item.percent_change > 0 ? (
-                    <IconGraphUpArrow />
-                  ) : (
-                    <IconGraphDownArrow />
-                  )}
-                </div>
-              </div>
-              <div className="mt-8">
-                <h1 className="text-2xl font-medium">Variações:</h1>
-                <div className="mt-4 flex flex-col justify-center items-center">
-                  <div className="flex gap-20">
-                    <p className="text-lg">Total:</p>
-                    <p className="text-lg font-medium">
-                      {formatVariation(item.latest_price.percent_change.all)}
-                    </p>
+                <div className="pl-20 flex w-full justify-between">
+                  <div className="flex flex-col">
+                    <p className="font-medium text-5xl">{item.name}</p>
+                    <p className="font-bold text-2xl">{item.symbol}</p>
                   </div>
-                  <div className="flex gap-20">
-                    <p className="text-lg">Hora:</p>
-                    <p className="text-lg font-medium">
-                      {formatVariation(item.latest_price.percent_change.hour)}
-                    </p>
-                  </div>
-                  <div className="flex gap-20">
-                    <p className="text-lg">Dia:</p>
-                    <p className="text-lg font-medium">
-                      {formatVariation(item.latest_price.percent_change.day)}
-                    </p>
-                  </div>
-                  <div className="flex gap-20">
-                    <p className="text-lg">Semana:</p>
-                    <p className="text-lg font-medium">
-                      {formatVariation(item.latest_price.percent_change.week)}
-                    </p>
-                  </div>
-                  <div className="flex gap-20">
-                    <p className="text-lg">Mês:</p>
-                    <p className="text-lg font-medium">
-                      {formatVariation(item.latest_price.percent_change.month)}
-                    </p>
-                  </div>
-                  <div className="flex gap-20">
-                    <p className="text-lg">Ano:</p>
-                    <p className="text-lg font-medium">
-                      {formatVariation(item.latest_price.percent_change.year)}
-                    </p>
+                  <div className="flex flex-col mt-4">
+                    <div className="flex gap-2">
+                      <p className="font-normal text-3xl">Preço:</p>
+                      <p className="font-medium text-3xl">
+                        {formatBRL(item.latest)}
+                      </p>
+                    </div>
+                    <div
+                      className={`text-2xl flex flex-row gap-2 justify-center items-center ${
+                        item.percent_change > 0
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {formatVariation(item.percent_change)}
+                      {item.percent_change > 0 ? (
+                        <IconGraphUpArrow />
+                      ) : (
+                        <IconGraphDownArrow />
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
+              <table className="mt-20 w-full bg-white rounded-lg shadow-lg">
+                <tr>
+                  <th className="p-2"></th>
+                  <th className="p-2 text-center">Total</th>
+                  <th className="p-2 text-center">Hora</th>
+                  <th className="p-2 text-center">Dia</th>
+                  <th className="p-2 text-center">Semana</th>
+                  <th className="p-2 text-center">Mês</th>
+                  <th className="p-2 text-center">Ano</th>
+                </tr>
+                <tr>
+                  <td className="p-2 text-left text-lg">Variação</td>
+                  <td className="p-2 text-center text-lg font-medium">
+                    {formatVariation(item.latest_price.percent_change.all)}
+                  </td>
+                  <td className="p-2 text-center text-lg font-medium">
+                    {formatVariation(item.latest_price.percent_change.hour)}
+                  </td>
+                  <td className="p-2 text-center text-lg font-medium">
+                    {formatVariation(item.latest_price.percent_change.day)}
+                  </td>
+                  <td className="p-2 text-center text-lg font-medium">
+                    {formatVariation(item.latest_price.percent_change.week)}
+                  </td>
+                  <td className="p-2 text-center text-lg font-medium">
+                    {formatVariation(item.latest_price.percent_change.month)}
+                  </td>
+                  <td className="p-2 text-center text-lg font-medium">
+                    {formatVariation(item.latest_price.percent_change.year)}
+                  </td>
+                </tr>
+              </table>
             </div>
           ))}
         </div>

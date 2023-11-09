@@ -4,7 +4,7 @@ import IconCashCoin from "../assets/svgs/Logo";
 export default function Header() {
   //define as rotas do header
   const routes = [
-    { path: "/", name: "Home" },
+    { path: "/home", name: "Home" },
     { path: "/crypto", name: "Crypto" },
     { path: "/investments", name: "B3" },
     { path: "/favorites", name: "Favoritas" },

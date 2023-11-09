@@ -12,6 +12,6 @@ export async function getB3() {
 
 //pega os ativos de forma limitada
 export async function getPaginatedB3() {
-  const response = await Get(baseUrl + "quote/list?limit=50&token=" + apiKey);
+  const response = await Get(baseUrl + "quote/list?&token=" + apiKey);
   return response;
 }
