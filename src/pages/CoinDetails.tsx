@@ -35,6 +35,7 @@ const CoinDetails = () => {
       }
     } catch (error) {
       console.error("Erro ao buscar os dados da API:", error);
+      console.log(coinPriceHistory);
     }
   }
 
